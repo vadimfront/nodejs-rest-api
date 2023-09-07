@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+const { Schema, model } = require("mongoose");
 
 const movieSchema = new Schema({
   name: {
@@ -16,3 +16,11 @@ const movieSchema = new Schema({
     default: false,
   },
 });
+
+const Contacts = model("contact", movieSchema);
+
+const modelContacts = { Contacts };
+
+module.exports = {
+  modelContacts,
+};
