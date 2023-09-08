@@ -37,7 +37,7 @@ const addNewContact = async (req, res) => {
 
 const deleteContact = async (req, res) => {
   const { contactId } = req.params;
-  const result = await Contacts.findOneAndDelete(contactId);
+  const result = await Contacts.findOneAndDelete({ _id: contactId });
   if (!result) {
     throw HttpError(404, "Not found");
   }
