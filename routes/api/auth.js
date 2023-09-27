@@ -10,14 +10,19 @@ const {
   logout,
   updSubscription,
   updateAvatar,
+  verify,
+  resendVerifyEmail,
 } = require("../../controllers/users/index.js");
 const authRouter = express.Router();
 
 const userSignupValidate = validateBody(authSchema.userSignupSchema);
 const userSigninValidate = validateBody(authSchema.userSigninSchema);
 const userSubscriptionValidate = validateBody(authSchema.updSubscriptionSchema);
+const userEmailValidate = validateBody(authSchema.userEmailSchema);
 
 authRouter.post("/register", userSignupValidate, register);
+authRouter.get("/verify/:verificationCode", verify);
+authRouter.post("/verify", userEmailValidate, resendVerifyEmail);
 authRouter.post("/login", userSigninValidate, login);
 authRouter.post("/logout", authenticate, logout);
 authRouter.get("/current", authenticate, getCurrent);

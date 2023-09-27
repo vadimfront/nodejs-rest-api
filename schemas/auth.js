@@ -17,8 +17,13 @@ const updSubscriptionSchema = Joi.object({
   subscription: Joi.string().valid(...constants.subscriptions),
 });
 
+const userEmailSchema = Joi.object({
+  email: Joi.string().pattern(constants.emailRegex).required(),
+});
+
 module.exports = {
   userSignupSchema,
   userSigninSchema,
   updSubscriptionSchema,
+  userEmailSchema,
 };
