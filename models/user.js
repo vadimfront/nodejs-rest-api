@@ -19,6 +19,10 @@ const userSchema = new Schema(
       unique: true,
       match: constants.emailRegex,
     },
+    avatarURL: {
+      type: String,
+      required: true,
+    },
     subscription: {
       type: String,
       enum: ["starter", "pro", "business"],
@@ -27,6 +31,13 @@ const userSchema = new Schema(
     token: {
       type: String,
       default: null,
+    },
+    verify: {
+      type: Boolean,
+      default: false,
+    },
+    verificationCode: {
+      type: String,
     },
   },
   { versionKey: false, timestamps: true }
